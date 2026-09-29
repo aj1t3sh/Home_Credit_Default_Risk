@@ -1,0 +1,56 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment variables
+.env
+
+# Kaggle Dataset and Relational Data Files (Strict Exclusion)
+data/
+*.parquet
+application_train.csv
+application_test.csv
+bureau.csv
+bureau_balance.csv
+previous_application.csv
+POS_CASH_balance.csv
+installments_payments.csv
+credit_card_balance.csv
+HomeCredit_columns_description.csv
+sample_submission.csv
+
+# Keep submission and feature importance tracking
+!submission.csv
+!reports/feature_importance.csv
+
+# OS specific files
+.DS_Store
+Thumbs.db

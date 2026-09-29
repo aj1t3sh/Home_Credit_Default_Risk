@@ -1,0 +1,180 @@
+[2026-09-29 19:09:14] [INFO] [run_pipeline]: ================================================================
+[2026-09-29 19:09:14] [INFO] [run_pipeline]: STARTING HOME CREDIT DEFAULT RISK MACHINE LEARNING PIPELINE
+[2026-09-29 19:09:14] [INFO] [run_pipeline]: ================================================================
+[2026-09-29 19:09:14] [INFO] [run_pipeline]: STEP 1/6: Running Exploratory Data Analysis...
+[2026-09-29 19:09:14] [INFO] [eda_analysis]: ==> Starting [Running Exploratory Data Analysis]...
+[2026-09-29 19:09:15] [INFO] [eda_analysis]: Loaded train: (307511, 122), test: (48744, 121)
+[2026-09-29 19:09:15] [INFO] [eda_analysis]: Saved target_distribution.png
+[2026-09-29 19:09:15] [INFO] [eda_analysis]: Saved missing_values.png
+[2026-09-29 19:09:16] [INFO] [eda_analysis]: Saved ext_sources_kde.png
+[2026-09-29 19:09:16] [INFO] [eda_analysis]: Saved age_vs_default.png
+[2026-09-29 19:09:17] [INFO] [eda_analysis]: Saved correlation_matrix.png
+[2026-09-29 19:09:17] [INFO] [eda_analysis]: Saved days_employed_anomaly.png
+[2026-09-29 19:09:17] [INFO] [eda_analysis]: ==> Finished [Running Exploratory Data Analysis] in 3.15s (0.05 min)
+[2026-09-29 19:09:17] [INFO] [run_pipeline]: STEP 2/6: Preprocessing Application Datasets...
+[2026-09-29 19:09:17] [INFO] [data_preprocessing]: ==> Starting [Loading and Preprocessing Application Data]...
+[2026-09-29 19:09:17] [INFO] [data_preprocessing]: Reading /Users/ajiteshkaran/Documents/AI_ML/home-credit-default-risk/data/raw/application_train.csv and /Users/ajiteshkaran/Documents/AI_ML/home-credit-default-risk/data/raw/application_test.csv...
+[2026-09-29 19:09:18] [INFO] [data_preprocessing]: Raw train shape: (307511, 122), raw test shape: (48744, 121)
+[2026-09-29 19:09:18] [INFO] [data_preprocessing]: Label encoded 0 binary categorical columns.
+[2026-09-29 19:09:18] [INFO] [data_preprocessing]: One-hot encoding 0 multi-categorical columns: []
+[2026-09-29 19:09:18] [INFO] [data_preprocessing]: Common features after alignment: 121
+[2026-09-29 19:10:01] [INFO] [data_preprocessing]: ==> Starting [Loading and Preprocessing Application Data]...
+[2026-09-29 19:10:01] [INFO] [data_preprocessing]: Reading /Users/ajiteshkaran/Documents/AI_ML/home-credit-default-risk/data/raw/application_train.csv and /Users/ajiteshkaran/Documents/AI_ML/home-credit-default-risk/data/raw/application_test.csv...
+[2026-09-29 19:10:03] [INFO] [data_preprocessing]: Raw train shape: (307511, 122), raw test shape: (48744, 121)
+[2026-09-29 19:10:03] [INFO] [data_preprocessing]: Identified 16 categorical columns: ['NAME_CONTRACT_TYPE', 'CODE_GENDER', 'FLAG_OWN_CAR', 'FLAG_OWN_REALTY', 'NAME_TYPE_SUITE', 'NAME_INCOME_TYPE', 'NAME_EDUCATION_TYPE', 'NAME_FAMILY_STATUS', 'NAME_HOUSING_TYPE', 'OCCUPATION_TYPE', 'WEEKDAY_APPR_PROCESS_START', 'ORGANIZATION_TYPE', 'FONDKAPREMONT_MODE', 'HOUSETYPE_MODE', 'WALLSMATERIAL_MODE', 'EMERGENCYSTATE_MODE']
+[2026-09-29 19:10:03] [INFO] [data_preprocessing]: Label encoded 5 binary categorical columns: ['NAME_CONTRACT_TYPE', 'CODE_GENDER', 'FLAG_OWN_CAR', 'FLAG_OWN_REALTY', 'EMERGENCYSTATE_MODE']
+[2026-09-29 19:10:03] [INFO] [data_preprocessing]: One-hot encoding 11 multi-categorical columns: ['NAME_TYPE_SUITE', 'NAME_INCOME_TYPE', 'NAME_EDUCATION_TYPE', 'NAME_FAMILY_STATUS', 'NAME_HOUSING_TYPE', 'OCCUPATION_TYPE', 'WEEKDAY_APPR_PROCESS_START', 'ORGANIZATION_TYPE', 'FONDKAPREMONT_MODE', 'HOUSETYPE_MODE', 'WALLSMATERIAL_MODE']
+[2026-09-29 19:10:03] [INFO] [data_preprocessing]: Common features after alignment: 247
+[2026-09-29 19:10:03] [INFO] [data_preprocessing]: Preprocessed train shape: (307511, 249), test shape: (48744, 248)
+[2026-09-29 19:10:03] [INFO] [data_preprocessing]: ==> Finished [Loading and Preprocessing Application Data] in 1.76s (0.03 min)
+[2026-09-29 19:10:03] [INFO] [feature_engineering]: ==> Starting [Bureau and Bureau Balance Aggregations]...
+[2026-09-29 19:10:03] [INFO] [feature_engineering]: Reading bureau_balance.csv...
+[2026-09-29 19:10:08] [INFO] [feature_engineering]: Reading bureau.csv...
+[2026-09-29 19:10:36] [INFO] [feature_engineering]: ==> Starting [Bureau and Bureau Balance Aggregations]...
+[2026-09-29 19:10:36] [INFO] [feature_engineering]: Reading bureau_balance.csv...
+[2026-09-29 19:10:43] [INFO] [feature_engineering]: Reading bureau.csv...
+[2026-09-29 19:10:45] [INFO] [feature_engineering]: Bureau aggregated shape: (305811, 75)
+[2026-09-29 19:10:45] [INFO] [feature_engineering]: ==> Finished [Bureau and Bureau Balance Aggregations] in 8.79s (0.15 min)
+[2026-09-29 19:10:50] [INFO] [feature_engineering]: ==> Starting [Previous Applications Aggregations]...
+[2026-09-29 19:10:50] [INFO] [feature_engineering]: Reading previous_application.csv...
+[2026-09-29 19:10:57] [INFO] [feature_engineering]: Previous applications aggregated shape: (338857, 379)
+[2026-09-29 19:10:57] [INFO] [feature_engineering]: ==> Finished [Previous Applications Aggregations] in 7.21s (0.12 min)
+[2026-09-29 19:10:57] [INFO] [feature_engineering]: ==> Starting [POS CASH Balance Aggregations]...
+[2026-09-29 19:10:57] [INFO] [feature_engineering]: Reading POS_CASH_balance.csv...
+[2026-09-29 19:11:02] [INFO] [feature_engineering]: POS CASH aggregated shape: (337252, 34)
+[2026-09-29 19:11:02] [INFO] [feature_engineering]: ==> Finished [POS CASH Balance Aggregations] in 4.27s (0.07 min)
+[2026-09-29 19:11:02] [INFO] [feature_engineering]: ==> Starting [Installments Payments Aggregations]...
+[2026-09-29 19:11:02] [INFO] [feature_engineering]: Reading installments_payments.csv...
+[2026-09-29 19:11:07] [INFO] [feature_engineering]: Installments payments aggregated shape: (339587, 25)
+[2026-09-29 19:11:07] [INFO] [feature_engineering]: ==> Finished [Installments Payments Aggregations] in 4.89s (0.08 min)
+[2026-09-29 19:11:07] [INFO] [feature_engineering]: ==> Starting [Credit Card Balance Aggregations]...
+[2026-09-29 19:11:07] [INFO] [feature_engineering]: Reading credit_card_balance.csv...
+[2026-09-29 19:11:10] [INFO] [feature_engineering]: Credit card balance aggregated shape: (103558, 67)
+[2026-09-29 19:11:10] [INFO] [feature_engineering]: ==> Finished [Credit Card Balance Aggregations] in 3.67s (0.06 min)
+[2026-09-29 19:11:28] [INFO] [run_pipeline]: ================================================================
+[2026-09-29 19:11:28] [INFO] [run_pipeline]: STARTING HOME CREDIT DEFAULT RISK MACHINE LEARNING PIPELINE
+[2026-09-29 19:11:28] [INFO] [run_pipeline]: ================================================================
+[2026-09-29 19:11:28] [INFO] [run_pipeline]: STEP 1/6: Running Exploratory Data Analysis...
+[2026-09-29 19:11:28] [INFO] [eda_analysis]: ==> Starting [Running Exploratory Data Analysis]...
+[2026-09-29 19:11:30] [INFO] [eda_analysis]: Loaded train: (307511, 122), test: (48744, 121)
+[2026-09-29 19:11:30] [INFO] [eda_analysis]: Saved target_distribution.png
+[2026-09-29 19:11:30] [INFO] [eda_analysis]: Saved missing_values.png
+[2026-09-29 19:11:31] [INFO] [eda_analysis]: Saved ext_sources_kde.png
+[2026-09-29 19:11:31] [INFO] [eda_analysis]: Saved age_vs_default.png
+[2026-09-29 19:11:31] [INFO] [eda_analysis]: Saved correlation_matrix.png
+[2026-09-29 19:11:31] [INFO] [eda_analysis]: Saved days_employed_anomaly.png
+[2026-09-29 19:11:31] [INFO] [eda_analysis]: ==> Finished [Running Exploratory Data Analysis] in 3.01s (0.05 min)
+[2026-09-29 19:11:31] [INFO] [run_pipeline]: STEP 2/6: Preprocessing Application Datasets...
+[2026-09-29 19:11:31] [INFO] [data_preprocessing]: ==> Starting [Loading and Preprocessing Application Data]...
+[2026-09-29 19:11:31] [INFO] [data_preprocessing]: Reading /Users/ajiteshkaran/Documents/AI_ML/home-credit-default-risk/data/raw/application_train.csv and /Users/ajiteshkaran/Documents/AI_ML/home-credit-default-risk/data/raw/application_test.csv...
+[2026-09-29 19:11:33] [INFO] [data_preprocessing]: Raw train shape: (307511, 122), raw test shape: (48744, 121)
+[2026-09-29 19:11:33] [INFO] [data_preprocessing]: Identified 16 categorical columns: ['NAME_CONTRACT_TYPE', 'CODE_GENDER', 'FLAG_OWN_CAR', 'FLAG_OWN_REALTY', 'NAME_TYPE_SUITE', 'NAME_INCOME_TYPE', 'NAME_EDUCATION_TYPE', 'NAME_FAMILY_STATUS', 'NAME_HOUSING_TYPE', 'OCCUPATION_TYPE', 'WEEKDAY_APPR_PROCESS_START', 'ORGANIZATION_TYPE', 'FONDKAPREMONT_MODE', 'HOUSETYPE_MODE', 'WALLSMATERIAL_MODE', 'EMERGENCYSTATE_MODE']
+[2026-09-29 19:11:33] [INFO] [data_preprocessing]: Label encoded 5 binary categorical columns: ['NAME_CONTRACT_TYPE', 'CODE_GENDER', 'FLAG_OWN_CAR', 'FLAG_OWN_REALTY', 'EMERGENCYSTATE_MODE']
+[2026-09-29 19:11:33] [INFO] [data_preprocessing]: One-hot encoding 11 multi-categorical columns: ['NAME_TYPE_SUITE', 'NAME_INCOME_TYPE', 'NAME_EDUCATION_TYPE', 'NAME_FAMILY_STATUS', 'NAME_HOUSING_TYPE', 'OCCUPATION_TYPE', 'WEEKDAY_APPR_PROCESS_START', 'ORGANIZATION_TYPE', 'FONDKAPREMONT_MODE', 'HOUSETYPE_MODE', 'WALLSMATERIAL_MODE']
+[2026-09-29 19:11:33] [INFO] [data_preprocessing]: Common features after alignment: 247
+[2026-09-29 19:11:33] [INFO] [data_preprocessing]: Preprocessed train shape: (307511, 249), test shape: (48744, 248)
+[2026-09-29 19:11:33] [INFO] [data_preprocessing]: ==> Finished [Loading and Preprocessing Application Data] in 1.66s (0.03 min)
+[2026-09-29 19:11:33] [INFO] [run_pipeline]: STEP 3/6: Building Full Feature Matrix from Relational Datasets...
+[2026-09-29 19:11:33] [INFO] [feature_engineering]: ==> Starting [Full Feature Matrix Construction]...
+[2026-09-29 19:11:33] [INFO] [feature_engineering]: Building application domain features...
+[2026-09-29 19:11:33] [INFO] [feature_engineering]: ==> Starting [Bureau and Bureau Balance Aggregations]...
+[2026-09-29 19:11:33] [INFO] [feature_engineering]: Reading bureau_balance.csv...
+[2026-09-29 19:11:40] [INFO] [feature_engineering]: Reading bureau.csv...
+[2026-09-29 19:11:42] [INFO] [feature_engineering]: Bureau aggregated shape: (305811, 75)
+[2026-09-29 19:11:42] [INFO] [feature_engineering]: ==> Finished [Bureau and Bureau Balance Aggregations] in 9.12s (0.15 min)
+[2026-09-29 19:11:42] [INFO] [feature_engineering]: ==> Starting [Previous Applications Aggregations]...
+[2026-09-29 19:11:42] [INFO] [feature_engineering]: Reading previous_application.csv...
+[2026-09-29 19:11:50] [INFO] [feature_engineering]: Previous applications aggregated shape: (338857, 379)
+[2026-09-29 19:11:50] [INFO] [feature_engineering]: ==> Finished [Previous Applications Aggregations] in 7.54s (0.13 min)
+[2026-09-29 19:11:50] [INFO] [feature_engineering]: ==> Starting [POS CASH Balance Aggregations]...
+[2026-09-29 19:11:50] [INFO] [feature_engineering]: Reading POS_CASH_balance.csv...
+[2026-09-29 19:11:55] [INFO] [feature_engineering]: POS CASH aggregated shape: (337252, 34)
+[2026-09-29 19:11:55] [INFO] [feature_engineering]: ==> Finished [POS CASH Balance Aggregations] in 4.20s (0.07 min)
+[2026-09-29 19:11:55] [INFO] [feature_engineering]: ==> Starting [Installments Payments Aggregations]...
+[2026-09-29 19:11:55] [INFO] [feature_engineering]: Reading installments_payments.csv...
+[2026-09-29 19:11:59] [INFO] [feature_engineering]: Installments payments aggregated shape: (339587, 25)
+[2026-09-29 19:11:59] [INFO] [feature_engineering]: ==> Finished [Installments Payments Aggregations] in 4.79s (0.08 min)
+[2026-09-29 19:11:59] [INFO] [feature_engineering]: ==> Starting [Credit Card Balance Aggregations]...
+[2026-09-29 19:11:59] [INFO] [feature_engineering]: Reading credit_card_balance.csv...
+[2026-09-29 19:12:03] [INFO] [feature_engineering]: Credit card balance aggregated shape: (103558, 67)
+[2026-09-29 19:12:03] [INFO] [feature_engineering]: ==> Finished [Credit Card Balance Aggregations] in 3.92s (0.07 min)
+[2026-09-29 19:12:04] [INFO] [feature_engineering]: Sanitizing feature column names and values...
+[2026-09-29 19:12:05] [INFO] [feature_engineering]: Memory usage decreased from 880.68 MB to 840.79 MB (-4.5% reduction)
+[2026-09-29 19:12:05] [INFO] [feature_engineering]: Memory usage decreased from 139.55 MB to 133.23 MB (-4.5% reduction)
+[2026-09-29 19:12:05] [INFO] [feature_engineering]: Final Train shape: (307511, 849), Final Test shape: (48744, 848)
+[2026-09-29 19:12:05] [INFO] [feature_engineering]: ==> Finished [Full Feature Matrix Construction] in 31.56s (0.53 min)
+[2026-09-29 19:12:05] [INFO] [run_pipeline]: Saving engineered feature sets to /Users/ajiteshkaran/Documents/AI_ML/home-credit-default-risk/data/processed/train_features.parquet and /Users/ajiteshkaran/Documents/AI_ML/home-credit-default-risk/data/processed/test_features.parquet...
+[2026-09-29 19:12:08] [INFO] [run_pipeline]: STEP 4/6: Training, Evaluating, and Selecting Models...
+[2026-09-29 19:12:08] [INFO] [train]: Dataset summary: Total samples = 307,511, Total features = 847
+[2026-09-29 19:12:08] [INFO] [train]: Target distribution: 0 = 282,686 (91.93%), 1 = 24,825 (8.07%)
+[2026-09-29 19:12:08] [INFO] [train]: Creating 80/20 stratified train/validation split...
+[2026-09-29 19:12:09] [INFO] [train]: Train split shape: (246008, 847), Validation split shape: (61503, 847)
+[2026-09-29 19:12:09] [INFO] [train]: ==> Starting [Training Baseline Logistic Regression]...
+[2026-09-29 19:12:09] [INFO] [train]: Fitting Logistic Regression baseline...
+[2026-09-29 19:12:34] [INFO] [evaluate]: ==================================================
+[2026-09-29 19:12:34] [INFO] [evaluate]: EVALUATION RESULTS: Logistic Regression Baseline
+[2026-09-29 19:12:34] [INFO] [evaluate]: ==================================================
+[2026-09-29 19:12:34] [INFO] [evaluate]: ROC-AUC Score: 0.77483
+[2026-09-29 19:12:34] [INFO] [evaluate]: PR-AUC (Average Precision): 0.25586
+[2026-09-29 19:12:34] [INFO] [evaluate]: Confusion Matrix (Threshold=0.5):
+[[40131 16407]
+ [ 1475  3490]]
+[2026-09-29 19:12:34] [INFO] [evaluate]: Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.96      0.71      0.82     56538
+           1       0.18      0.70      0.28      4965
+
+    accuracy                           0.71     61503
+   macro avg       0.57      0.71      0.55     61503
+weighted avg       0.90      0.71      0.77     61503
+
+[2026-09-29 19:12:34] [INFO] [evaluate]: ==================================================
+[2026-09-29 19:12:34] [INFO] [train]: ==> Finished [Training Baseline Logistic Regression] in 25.04s (0.42 min)
+[2026-09-29 19:12:34] [INFO] [train]: ==> Starting [Training LightGBM Gradient Boosting Model]...
+[2026-09-29 19:12:34] [INFO] [train]: Class imbalance: 226,148 negative vs 19,860 positive (scale_pos_weight=11.39)
+[2026-09-29 19:12:34] [INFO] [train]: Fitting LightGBM model with early stopping on validation ROC-AUC...
+[2026-09-29 19:13:01] [INFO] [evaluate]: ==================================================
+[2026-09-29 19:13:01] [INFO] [evaluate]: EVALUATION RESULTS: LightGBM Classifier
+[2026-09-29 19:13:01] [INFO] [evaluate]: ==================================================
+[2026-09-29 19:13:01] [INFO] [evaluate]: ROC-AUC Score: 0.78848
+[2026-09-29 19:13:01] [INFO] [evaluate]: PR-AUC (Average Precision): 0.29139
+[2026-09-29 19:13:01] [INFO] [evaluate]: Confusion Matrix (Threshold=0.5):
+[[56391   147]
+ [ 4746   219]]
+[2026-09-29 19:13:01] [INFO] [evaluate]: Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.92      1.00      0.96     56538
+           1       0.60      0.04      0.08      4965
+
+    accuracy                           0.92     61503
+   macro avg       0.76      0.52      0.52     61503
+weighted avg       0.90      0.92      0.89     61503
+
+[2026-09-29 19:13:01] [INFO] [evaluate]: ==================================================
+[2026-09-29 19:13:01] [INFO] [train]: ==> Finished [Training LightGBM Gradient Boosting Model] in 26.77s (0.45 min)
+[2026-09-29 19:13:01] [INFO] [train]: ==================================================
+[2026-09-29 19:13:01] [INFO] [train]: MODEL COMPARISON SUMMARY
+[2026-09-29 19:13:01] [INFO] [train]: ==================================================
+[2026-09-29 19:13:01] [INFO] [train]: 1. Logistic Regression Baseline Val ROC-AUC: 0.77483
+[2026-09-29 19:13:01] [INFO] [train]: 2. LightGBM Gradient Boosting Val ROC-AUC:   0.78848
+[2026-09-29 19:13:01] [INFO] [train]: ==================================================
+[2026-09-29 19:13:01] [INFO] [evaluate]: Saved ROC curve plot to /Users/ajiteshkaran/Documents/AI_ML/home-credit-default-risk/reports/figures/roc_curve.png
+[2026-09-29 19:13:01] [INFO] [evaluate]: Saved complete feature importances (847 features) to /Users/ajiteshkaran/Documents/AI_ML/home-credit-default-risk/reports/feature_importance.csv
+[2026-09-29 19:13:01] [INFO] [evaluate]: Saved top 30 feature importance plot to /Users/ajiteshkaran/Documents/AI_ML/home-credit-default-risk/reports/figures/feature_importance.png
+[2026-09-29 19:13:01] [INFO] [evaluate]: Saved confusion matrix plot to /Users/ajiteshkaran/Documents/AI_ML/home-credit-default-risk/reports/figures/confusion_matrix.png
+[2026-09-29 19:13:01] [INFO] [train]: Retraining final LightGBM model on full training set (307,511 rows) with n_estimators=538...
+[2026-09-29 19:13:01] [INFO] [train]: ==> Starting [Full Training Dataset Fit]...
+[2026-09-29 19:13:30] [INFO] [train]: ==> Finished [Full Training Dataset Fit] in 28.98s (0.48 min)
+[2026-09-29 19:13:30] [INFO] [train]: Persisted final model artifact to /Users/ajiteshkaran/Documents/AI_ML/home-credit-default-risk/models/final_model.pkl
+[2026-09-29 19:13:30] [INFO] [run_pipeline]: STEP 5/6: Generating and Validating Test Predictions...
+[2026-09-29 19:13:30] [INFO] [predict]: ==> Starting [Generating Test Predictions and Submission File]...
+[2026-09-29 19:13:30] [INFO] [predict]: Computing test predictions for 48,744 applicants with 847 features...
+[2026-09-29 19:13:30] [INFO] [predict]: Executing rigorous submission validation checks...
+[2026-09-29 19:13:30] [INFO] [predict]: Sample submission alignment verification: PASSED (IDs and ordering match perfectly).
+[2026-09-29 19:13:30] [INFO] [predict]: Successfully saved Kaggle submission to: /Users/ajiteshkaran/Documents/AI_ML/home-credit-default-risk/submission.csv
+[2026-09-29 19:13:30] [INFO] [predict]: Submission shape: (48744, 2)
+[2026-09-29 19:13:30] [INFO] [predict]: Target probability statistics: min=0.00336, max=0.75209, mean=0.07501
+[2026-09-29 19:13:30] [INFO] [predict]: ==> Finished [Generating Test Predictions and Submission File] in 0.34s (0.01 min)
+[2026-09-29 19:13:30] [INFO] [run_pipeline]: STEP 6/6: Execution Completed Successfully!
